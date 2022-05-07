@@ -2,31 +2,57 @@
 // This file contains all application-wide Sass variables.
 // -----------------------------------------------------------------------------
 
+@use "sass:meta";
+
 /// Regular font family
 $font-stack: "Open Sans", sans-serif;
-$font-script: 'Bangers', cursive;
+$font-script: "Bangers", cursive;
 
 /// Colors
-$link-color: #1d3557;
 
-$text-color: #333333;
-$main-color: #203b4e;
-$background-color: #e0dbd8;
-$main-color-alpha: #4c758b;
-$main-color-beta: #c4c3be;
-$color-player-1: #003049ff;
-$color-player-2: #780000ff;
+:root {
+  --color-main: #8ecae6;
+  --color-alpha: #219ebc;
+  --color-beta: #023047;
+  --color-gamma: #ffb703;
+  --color-delta: #fb8500;
 
-$alert: #e63946;
+  --color-link: #ffb703;
+  --color-text: #999999;
+  --color-background: #f3f3f3;
 
-$very-light-grey: #f3f3f3;
-$light-grey: #e1e1e1;
-$grey: #999999;
-$mid-grey: #3d454b;
-$dark-grey: #282a2c;
+  --color-alert: #e63946;
 
-$black: #000000;
-$white: #ffffff;
+  --very-light-grey: #f3f3f3;
+  --light-grey: #e1e1e1;
+  --grey: #999999;
+  --dark-grey: #3d3d3d;
+  --very-dark-grey: #282828;
+
+  --black: #000000;
+  --white: #ffffff;
+}
+
+$color-main: var(--color-main);
+$color-alpha: var(--color-alpha);
+$color-beta: var(--color-beta);
+$color-gamma: var(--color-gamma);
+$color-delta: var(--color-delta);
+
+$color-link: var(--color-link);
+$color-text: var(--color-text);
+$color-background: var(--color-background);
+
+$color-alert-: var(--color-alert);
+
+$very-light-grey: var(--very-light-grey);
+$light-grey: var(--light-grey);
+$grey: var(--grey);
+$dark-grey: var(--dark-grey);
+$very-dark-grey: var(--very-dark-grey);
+
+$black: var(--black);
+$white: var(--white);
 
 //$assetImagePath : "~@/assets/images";
 
