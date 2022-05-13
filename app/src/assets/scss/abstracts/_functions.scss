@@ -1,3 +1,26 @@
 // -----------------------------------------------------------------------------
 // This file contains all application-wide Sass functions.
 // -----------------------------------------------------------------------------
+
+.reset-button {
+    font-size: 100%;
+    font-family: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.reset-list {
+    &,
+    ul {
+        padding: 0;
+        margin: O;
+        list-style: none;
+    }
+    li {
+        padding: 0;
+        margin: 0;
+    }
+}

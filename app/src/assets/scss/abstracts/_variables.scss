@@ -5,8 +5,7 @@
 @use "sass:meta";
 
 /// Regular font family
-$font-stack: "Open Sans", sans-serif;
-$font-script: "Bangers", cursive;
+$font-stack: "Space Mono", monospace;
 
 /// Colors
 
@@ -17,12 +16,6 @@ $font-script: "Bangers", cursive;
   --color-gamma: #ffb703;
   --color-delta: #fb8500;
 
-  --color-link: #ffb703;
-  --color-text: #999999;
-  --color-background: #f3f3f3;
-
-  --color-alert: #e63946;
-
   --very-light-grey: #f3f3f3;
   --light-grey: #e1e1e1;
   --grey: #999999;
@@ -31,6 +24,12 @@ $font-script: "Bangers", cursive;
 
   --black: #000000;
   --white: #ffffff;
+
+  --text-color: #e1e1e1;
+  --link-color: #ffb703;
+  --background-color: #023047;
+
+  --color-alert: #e63946;
 }
 
 $color-main: var(--color-main);
@@ -38,12 +37,6 @@ $color-alpha: var(--color-alpha);
 $color-beta: var(--color-beta);
 $color-gamma: var(--color-gamma);
 $color-delta: var(--color-delta);
-
-$color-link: var(--color-link);
-$color-text: var(--color-text);
-$color-background: var(--color-background);
-
-$color-alert-: var(--color-alert);
 
 $very-light-grey: var(--very-light-grey);
 $light-grey: var(--light-grey);
@@ -54,17 +47,22 @@ $very-dark-grey: var(--very-dark-grey);
 $black: var(--black);
 $white: var(--white);
 
-//$assetImagePath : "~@/assets/images";
+$link-color: var(--link-color);
+$text-color: var(--text-color);
+$background-color: var(--background-color);
+
+$color-alert: var(--color-alert);
+
+$font-size: clamp(14px, 1.8vw, 18px);
+$line-height: 1.4em;
 
 /// Breakpoints map
-/// @prop {String} keys - Keys are identifiers mapped to a given length
-/// @prop {Map} values - Values are actual breakpoints expressed in pixels
 $breakpoints: (
   "xs": 540px,
   "sm": 720px,
   "md": 960px,
-  "lg": 1140px,
-  "xl": 1320px,
+  "lg": 1024px,
+  "xl": 1200px,
 ) !default;
 
 /// Container's maximum width

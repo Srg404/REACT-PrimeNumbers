@@ -1,0 +1,63 @@
+@import "../../assets/scss/abstracts.scss";
+
+.big-menu.menu {
+    ul.languages {
+        @extend .reset-list;
+    }
+    nav {
+        max-width: 320px;
+        text-align: center;
+    }
+    nav.menu {
+        margin: 5em auto 2em;
+        li {
+            margin: 0.5em 0;
+        }
+        a {
+            text-transform: uppercase;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.5em;
+            color: $text-color;
+            &:hover,
+            &.active {
+                color: $link-color;
+            }
+        }
+    }
+    nav.languages {
+        margin: 2em auto 5em;
+        ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: stretch;
+            background-color: $white;
+            padding: 0.5em;
+            border-radius: 5px;
+        }
+        li {
+            flex-grow: 1;
+            &.sepa {
+                flex-grow: 0;
+                width: 1px;
+                background-color: $light-grey;
+            }
+        }
+        button {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            font-weight: 800;
+            color: $light-grey;
+            &:hover {
+                color: $grey;
+            }
+            &.active,
+            &.active:hover {
+                color: $link-color;
+                pointer-events: none;
+            }
+        }
+    }
+}

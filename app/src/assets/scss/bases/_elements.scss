@@ -5,3 +5,29 @@
     text-decoration: none;
   }
 }
+
+.icon-menu {
+  width: 1em;
+  height: 1em;
+}
+
+/* Big Menu */
+
+.big-menu {
+  position: fixed;
+  top: calc(4em + 1px);
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: $color-beta;
+  transition: transform 0.5s ease;
+  &.setting {
+    transform: translateX(-100vw);
+  }
+  &.menu {
+    transform: translateX(100vw);
+  }
+  &.active {
+    transform: translateX(0);
+  }
+}

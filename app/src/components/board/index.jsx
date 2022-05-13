@@ -2,8 +2,8 @@ import './index.scss';
 
 function Board() {
   return (
-    <div className="App">
-      [MAIN]
+    <div className="board">
+      [Board]
     </div>
   );
 }

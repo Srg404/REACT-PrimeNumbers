@@ -1,5 +1,31 @@
 @import "../../assets/scss/abstracts.scss";
 
-.Header {
-    color: $color-main;
+.header {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid $text-color;
+    justify-content: space-between;
+    padding: 1em;
+    h1 {
+        color: inherit;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 0 1em;
+    }
+    button {
+        @extend .reset-button;
+        transition: transform 0.5s ease;
+        opacity: 0.75;
+        &.active {
+            opacity: 1;
+            transform: rotate(90deg);
+        }
+        span {
+            display: none;
+        }
+        img {
+            width: 1.5em;
+            height: 1.5em;
+        }
+    }
 }
