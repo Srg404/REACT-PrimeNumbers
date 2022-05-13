@@ -1,13 +1,21 @@
 import './index.scss';
-import returnIcon from '../../assets/images/return.svg';
-import removeIcon from '../../assets/images/remove.svg';
+import Key from './Key';
 
 function Keyboard() {
   return (
     <div className="keyboard">
-      [Keyboard]
-      <img src={returnIcon} className="icon-menu" alt="setting" />
-      <img src={removeIcon} className="icon-menu" alt="setting" />
+      <Key val="9" />
+      <Key val="8" />
+      <Key val="7" />
+      <Key val="6" />
+      <Key val="5" />
+      <Key val="4" />
+      <Key val="3" />
+      <Key val="2" />
+      <Key val="1" />
+      <Key val="return" />
+      <Key val="0" />
+      <Key val="remove" />
     </div>
   );
 }

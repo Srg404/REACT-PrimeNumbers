@@ -1,9 +1,15 @@
 import './index.scss';
+import Row from './Row';
 
 function Board() {
   return (
     <div className="board">
-      [Board]
+      <Row />
+      <Row />
+      <Row />
+      <Row />
+      <Row />
+      <Row />
     </div>
   );
 }

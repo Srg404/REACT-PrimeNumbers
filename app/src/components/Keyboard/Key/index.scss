@@ -1,0 +1,22 @@
+@import "../../../assets/scss/abstracts.scss";
+
+.key {
+    border: 1px solid $black;
+    border-radius: 0.25em;
+    background-color: $light-grey;
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    font-size: 1.25em;
+    line-height: 1em;
+    img {
+        max-width: 1em;
+        max-height: 1em;
+    }
+    &.key-return {
+        background-color: $link-color;
+    }
+}
