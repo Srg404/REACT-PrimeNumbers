@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Number({status,val}) {
   return (
-    <div className="number"><span>{val}</span></div>
+    <div className={`number ${status}`}><span>{val}</span></div>
   );
 }
 

@@ -1,17 +1,25 @@
 import './index.scss';
+import PropTypes from 'prop-types';
 import Row from './Row';
 
-function Board() {
+function Board({boardArray}) {
   return (
     <div className="board">
-      <Row />
-      <Row />
-      <Row />
-      <Row />
-      <Row />
-      <Row />
+      {boardArray.map(
+        (row, index) => (
+          <Row key={index} row={row} />
+        )
+      )}
     </div>
   );
+}
+
+Board.defaultProps = {
+
+}
+
+Board.propTypes = {
+  boardArray: PropTypes.array,
 }
 
 export default Board;

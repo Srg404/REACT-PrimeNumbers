@@ -11,4 +11,19 @@
     font-size: 1.25em;
     line-height: 1em;
     margin: 0.15em;
+    &.empty {
+        span {
+            opacity: 0.5;
+        }
+    }
+    &.neutral {
+    }
+    &.exist {
+        background-color: $color-gamma;
+        color: $black;
+    }
+    &.ok {
+        background-color: $color-main;
+        color: $black;
+    }
 }

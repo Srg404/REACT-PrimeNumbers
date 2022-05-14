@@ -5,12 +5,15 @@ import Keyboard from './components/Keyboard';
 import Menu from './components/Menu';
 import Setting from './components/Setting';
 import { useState } from 'react';
+import data from './data/init.json';
 
 function App() {
 
   const [showSetting, setShowSetting] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const title = "Prime Number";
+
+  const boardArray = data.medium;
 
   return (
     <div className="App">
@@ -25,7 +28,7 @@ function App() {
       </header>
       <main className="App-main">
         <div className="container">
-          <Board />
+          <Board boardArray={boardArray} />
           <Keyboard />
         </div>
       </main>
