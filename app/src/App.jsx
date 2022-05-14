@@ -13,22 +13,25 @@ function App() {
   const [showMenu, setShowMenu] = useState(false);
   const title = "Prime Number";
 
-  const boardArray = data.medium;
+  const [boardArray, setBoardArray] = useState(data.medium);
 
   return (
     <div className="App">
       <header className="App-header">
         <Header 
-        title={title}
-        showSetting={showSetting}
-        setShowSetting={setShowSetting}
-        showMenu={showMenu}
-        setShowMenu={setShowMenu}
+          title={title}
+          showSetting={showSetting}
+          setShowSetting={setShowSetting}
+          showMenu={showMenu}
+          setShowMenu={setShowMenu}
         />
       </header>
       <main className="App-main">
         <div className="container">
-          <Board boardArray={boardArray} />
+          <Board 
+            boardArray={boardArray} 
+            setBoardArray={setBoardArray}
+          />
           <Keyboard />
         </div>
       </main>

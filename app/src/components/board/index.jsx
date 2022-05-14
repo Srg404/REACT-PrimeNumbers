@@ -2,7 +2,7 @@ import './index.scss';
 import PropTypes from 'prop-types';
 import Row from './Row';
 
-function Board({boardArray}) {
+function Board({boardArray,setBoardArray}) {
   return (
     <div className="board">
       {boardArray.map(

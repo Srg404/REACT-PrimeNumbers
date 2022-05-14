@@ -3,15 +3,18 @@
                 [["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0]],
                 [["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0]],
                 [["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0]],
+                [["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0]],
                 [["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0]]
                ],
     "medium" : [[["neutral",1], ["exist",2], ["ok",3], ["neutral",4], ["exist",5],["exist",6]],
                 [["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0]],
                 [["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0]],
                 [["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0]],
+                [["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0]],
                 [["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0]]
                ],
     "hard" :   [[["neutral",1], ["exist",2], ["ok",3], ["neutral",4], ["exist",5],["exist",6],["ok",7]],
+                [["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0]],
                 [["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0]],
                 [["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0]],
                 [["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0], ["empty",0]],
