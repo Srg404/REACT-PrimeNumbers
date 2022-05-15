@@ -7,13 +7,9 @@ function Number({status,val}) {
   );
 }
 
-Number.defaultProps = {
-  status: 'empty',
-}
-
 Number.propTypes = {
-  status: PropTypes.string,
-  val: PropTypes.number,
+  status: PropTypes.string.isRequired,
+  val: PropTypes.number.isRequired,
 }
 
 export default Number;

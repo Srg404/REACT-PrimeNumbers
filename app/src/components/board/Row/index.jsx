@@ -14,12 +14,8 @@ function Row({row}) {
   );
 }
 
-Row.defaultProps = {
-
-}
-
 Row.propTypes = {
-  row: PropTypes.array,
+  row: PropTypes.array.isRequired,
 }
 
 export default Row;

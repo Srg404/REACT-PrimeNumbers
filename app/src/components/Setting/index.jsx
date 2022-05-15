@@ -1,7 +1,16 @@
 import './index.scss';
 import PropTypes from 'prop-types';
 
-function Setting({showSetting}) {
+function Setting({showSetting, setTheme, mode, setMode}) {
+
+  const handleChangeTheme = (e) => {
+    if (e.target.checked) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  }
+
   return (
     <div className={showSetting ? "big-menu setting active" : "big-menu setting"}>
       <ul className="options">
@@ -9,16 +18,16 @@ function Setting({showSetting}) {
           <div className="label">Mode</div>
           <div className="option">
             <ul className="levels">
-              <li className="">
-                <button>Easy</button>
+              <li className={(mode === "easy") ? "active" : ""}>
+                <button onClick={() => {setMode("easy")}}>Easy</button>
                 <em>x5</em>
               </li>
-              <li className="active">
-                <button>Medium</button>
+              <li className={(mode === "medium") ? "active" : ""}>
+                <button onClick={() => {setMode("medium")}}>Medium</button>
                 <em>x6</em>
               </li>
-              <li className="">
-                <button>Hard</button>
+              <li className={(mode === "hard") ? "active" : ""}>
+                <button  onClick={() => {setMode("hard")}}>Hard</button>
                 <em>x7</em>
               </li>
             </ul>
@@ -27,9 +36,13 @@ function Setting({showSetting}) {
         <li>
           <div className="label">Dark Theme</div>
           <div className="option">
-            <input type="checkbox" />
+            <input 
+              type="checkbox" 
+              onChange={handleChangeTheme}
+            />
           </div>
         </li>
+        {/* 
         <li>
           <div className="label">
             High Contrast
@@ -39,6 +52,7 @@ function Setting({showSetting}) {
             <input type="checkbox" />
           </div>
         </li>
+        */}
         <li>
           <div className="label">Feedback</div>
           <div className="option">

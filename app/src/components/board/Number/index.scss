@@ -1,7 +1,8 @@
 @import "../../../assets/scss/abstracts.scss";
 
 .number {
-    border: 1px solid $white;
+    border: 1px solid $dark-grey;
+    background-color: $very-dark-grey;
     aspect-ratio: 1/1;
     padding: 0.75em;
     display: flex;
@@ -12,11 +13,14 @@
     line-height: 1em;
     margin: 0.15em;
     &.empty {
+        opacity: 0.75;
         span {
-            opacity: 0.5;
+            opacity: 0.1;
         }
     }
     &.neutral {
+        background-color: $dark-grey;
+        color: $white;
     }
     &.exist {
         background-color: $color-gamma;

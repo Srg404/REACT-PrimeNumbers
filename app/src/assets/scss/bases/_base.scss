@@ -13,7 +13,7 @@ html {
 
 html,
 body {
-  min-height: 100%;
+  height: 100%;
 }
 
 body {
@@ -24,6 +24,10 @@ body {
   color: $text-color;
   font-size: $font-size;
   line-height: $line-height;
+}
+
+#root {
+  height: 100%;
 }
 
 a {
@@ -67,4 +71,33 @@ nav ul {
   @include respond-to(sm) {
     display: block;
   }
+}
+
+.App {
+  background-color: $background-color;
+  color: $text-color;
+  min-height: 100%;
+}
+
+.App.light {
+  --color-main: #8ecae6;
+  --color-alpha: #219ebc;
+  --color-beta: #f4f4f4;
+  --color-gamma: #ef8976;
+  --color-delta: #23f5d3;
+
+  --very-light-grey: #f3f300;
+  --light-grey: #e1e100;
+  --grey: #999900;
+  --dark-grey: #3d3d00;
+  --very-dark-grey: #282800;
+
+  --black: #ffffff;
+  --white: #333333;
+
+  --text-color: #333333;
+  --link-color: #ffb703;
+  --background-color: #f3f3f3;
+
+  --color-alert: #e63946;
 }

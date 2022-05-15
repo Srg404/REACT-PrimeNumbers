@@ -27,8 +27,7 @@ Menu.defaultProps = {
 }
 
 Menu.propTypes = {
-  showMenu: PropTypes.bool,
+  showMenu: PropTypes.bool
 }
 
 export default Menu;
-

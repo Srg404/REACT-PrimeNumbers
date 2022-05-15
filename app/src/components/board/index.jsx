@@ -14,12 +14,8 @@ function Board({boardArray,setBoardArray}) {
   );
 }
 
-Board.defaultProps = {
-
-}
-
 Board.propTypes = {
-  boardArray: PropTypes.array,
+  boardArray: PropTypes.array.isRequired,
 }
 
 export default Board;
