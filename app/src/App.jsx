@@ -7,6 +7,7 @@ import Setting from './components/Setting';
 import { useEffect, useState } from 'react';
 import data from './data/init.json';
 import UsePrimeNumber from './hooks/UsePrimeNumber';
+import UseDeepCopy from './hooks/UseDeepCopy';
 
 let gameRound = 0;
 let gamePosition = 0;
@@ -23,7 +24,7 @@ function App() {
 
   useEffect(() => {
     // generate the Prime Number
-    // TODO: Improve this generation
+    // TODO: Improve this code
     switch (mode) {
       case 'easy' :
         setResult(UsePrimeNumber(Math.random().toString().slice(2,7)).slice(-1)[0]);
@@ -39,14 +40,13 @@ function App() {
     }
     // Set Board
     console.log("Reset");
-    setBoardArray(boardArray => [...data[mode]]);
+    setBoardArray(UseDeepCopy(data)[mode]);
     gameRound = 0;
     gamePosition = 0;
   }, [mode]);
 
   // The game
   function game(keyVal) {
-    console.log(data[mode]);
     ((parseInt(keyVal) >= 0) && (parseInt(keyVal) <= 9)) && addNum(keyVal);
     ((keyVal === "Backspace") && (gamePosition > 0)) && removeNum();
     (keyVal === "Enter") && checkRow();
@@ -90,7 +90,7 @@ function App() {
     return () => {
       document.removeEventListener('keyup', handleKeyUp);
     };
-  }, []);
+  });
 
   const handleKeyUp = (e) => {
     game(e.key);
