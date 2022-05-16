@@ -100,7 +100,7 @@ function App() {
         } else if (resultArray.filter((e) => el[1] === e).length) {
           return ["exist", el[1]];
         } else {
-          return el;
+          return ["neutral", el[1]];
         }
       });
 
