@@ -9,7 +9,7 @@ function Number({status,val}) {
 
 Number.propTypes = {
   status: PropTypes.string.isRequired,
-  val: PropTypes.number.isRequired,
+  // val: PropTypes.string.isRequired,
 }
 
 export default Number;

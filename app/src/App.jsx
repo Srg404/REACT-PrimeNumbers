@@ -8,9 +8,11 @@ import { useEffect, useState } from 'react';
 import data from './data/init.json';
 import UsePrimeNumber from './hooks/UsePrimeNumber';
 
-function App() {
+let gameRound = 0;
+let gamePosition = 0;
+const title = "Prime Number";
 
-  const title = "Prime Number";
+function App() {
 
   const [showSetting, setShowSetting] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -33,11 +35,66 @@ function App() {
           // "medium"
           setResult(UsePrimeNumber(Math.random().toString().slice(2,8)).slice(-1)[0]);
           break;
+
     }
     // Set Board
-    setBoardArray(data[mode]);
-
+    console.log("Reset");
+    setBoardArray(boardArray => [...data[mode]]);
+    gameRound = 0;
+    gamePosition = 0;
   }, [mode]);
+
+  // The game
+  function game(keyVal) {
+    console.log(data[mode]);
+    ((parseInt(keyVal) >= 0) && (parseInt(keyVal) <= 9)) && addNum(keyVal);
+    ((keyVal === "Backspace") && (gamePosition > 0)) && removeNum();
+    (keyVal === "Enter") && checkRow();
+  }
+
+  function addNum(keyVal) {
+    if (gamePosition < boardArray[0].length){
+      const currentRow = boardArray[gameRound];
+      currentRow[gamePosition][0] = "neutral";
+      currentRow[gamePosition][1] = keyVal;
+      gamePosition = (gamePosition === currentRow.length) ? gamePosition : gamePosition + 1 ;
+      updateBoardRow(currentRow);
+    }
+  }
+
+  function removeNum() {
+    if (gamePosition > 0){
+      const currentRow = boardArray[gameRound];
+      gamePosition--;
+      currentRow[gamePosition][0] = "empty";
+      currentRow[gamePosition][1] = "0";
+      updateBoardRow(currentRow);
+    }
+  }
+
+  function updateBoardRow(currentRow) {
+    setBoardArray(boardArray => boardArray.map((el,index) => {
+      if (gameRound === index) {
+        return currentRow;
+      }
+      return el
+    }));
+  }
+
+  function checkRow() {
+    console.log(`Check row`)
+  }
+
+  useEffect(() => {
+    document.addEventListener('keyup', handleKeyUp);
+    return () => {
+      document.removeEventListener('keyup', handleKeyUp);
+    };
+  }, []);
+
+  const handleKeyUp = (e) => {
+    game(e.key);
+  }
 
   return (
     <div className={`App ${theme}`}>
@@ -52,12 +109,14 @@ function App() {
       </header>
       <main className="App-main">
         <div className="container">
-          <div><em>result = <b>{result}</b></em></div>
+          <center><em>result = <b>{result}</b></em></center>
           <Board 
             boardArray={boardArray} 
             setBoardArray={setBoardArray}
           />
-          <Keyboard />
+          <Keyboard 
+            game={game}
+          />
         </div>
       </main>
       <Menu 
