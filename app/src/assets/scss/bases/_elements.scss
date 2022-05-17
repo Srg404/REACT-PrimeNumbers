@@ -15,6 +15,7 @@
 
 .big-menu {
   position: fixed;
+  z-index: 99;
   top: calc(4em + 1px);
   right: 0;
   left: 0;

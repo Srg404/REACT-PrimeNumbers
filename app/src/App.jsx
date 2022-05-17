@@ -8,6 +8,7 @@ import data from './data/init.json';
 import { useEffect, useState } from 'react';
 import UsePrimeNumber from './hooks/UsePrimeNumber';
 import UseDeepCopy from './hooks/UseDeepCopy';
+import Result from './components/Board/Result';
 
 let gameRound = 0;
 let gamePosition = 0;
@@ -19,11 +20,18 @@ function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [theme, setTheme] = useState("dark");
   const [mode, setMode] = useState("medium");
+  const [play, setPlay] = useState(true);
   const [result, setResult] = useState(0);
   const [boardArray, setBoardArray] = useState([]);
 
   useEffect(() => {
     // generate the Prime Number
+    generatePrimeNumber();
+    // Set Board
+    initBoard();
+  }, [mode]);
+
+  function generatePrimeNumber() {
     // TODO: Improve this code
     switch (mode) {
       case 'easy':
@@ -37,11 +45,13 @@ function App() {
         setResult(UsePrimeNumber(Math.random().toString().slice(2, 8)).slice(-1)[0]);
         break;
     }
-    // Set Board
+  }
+
+  function initBoard() {
     setBoardArray(UseDeepCopy(data)[mode]);
     gameRound = 0;
     gamePosition = 0;
-  }, [mode]);
+  }
 
   // The game
   function game(keyVal) {
@@ -61,7 +71,7 @@ function App() {
     }
   }
 
-  // When the user push on enter delete
+  // When the user push on remove key
   function removeNum() {
     if (gamePosition > 0) {
       const currentRow = boardArray[gameRound];
@@ -92,7 +102,7 @@ function App() {
       const resultArray = result.toString().split("");
 
       // Possible Value : empty neutral exist ok 
-
+      // TODO: mettre en exist seulement si un autre element est en neutral (ne pas compter les ok)
       const newRow = currentRow.map((el, index) => {
 
         if (el[1] === resultArray[index]) {
@@ -117,13 +127,16 @@ function App() {
 
     if (gameRound === boardArray.length) {
       console.log('Game over');
-
+      setPlay(false);
       // init Board
-      setBoardArray(UseDeepCopy(data)[mode]);
-      gameRound = 0;
-      gamePosition = 0;
-      // TODO: generate a new number result
+
     }
+  }
+
+  function playAgain() {
+    setPlay(true);
+    initBoard();
+    generatePrimeNumber();
   }
 
   // Get the values of keyboard keys
@@ -151,7 +164,9 @@ function App() {
       </header>
       <main className="App-main">
         <div className="container">
-          <center><em>result = <b>{result}</b></em></center>
+          
+          {!play && <Result result={result} playAgain={playAgain}/>}
+
           <Board
             boardArray={boardArray}
             setBoardArray={setBoardArray}
