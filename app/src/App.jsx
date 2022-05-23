@@ -94,36 +94,26 @@ function App() {
 
   // When the user push on enter key
   function checkRow() {
-    console.log(gameRound);
     if ((gameRound < boardArray.length) && (gamePosition === boardArray[0].length)) {
-      console.log(`Check row`);
 
       const currentRow = boardArray[gameRound];
       const resultArray = result.toString().split("");
 
       // Possible Value : empty neutral exist ok 
-      // TODO: mettre en exist seulement si un autre element est en neutral (ne pas compter les ok)
+
+      let onlyNotOK = [];
       let resultOnlyNotOK = [];
 
       let newRow = currentRow.map((el, index) => {
         if (el[1] === resultArray[index]) {
           return ["ok", el[1]];
         } else {
+          onlyNotOK.push( el[1]);
           resultOnlyNotOK.push(resultArray[index]);
           return ["neutral", el[1]];
         }
-      })
-     
-      const onlyNotOK = newRow
-        .filter((el) => el[0] !== "ok")
-        .map((e) => e[1]);
-
-      //console.log('onlyNotOk',onlyNotOK);
-      //console.log('resultOnlyNotOK',resultOnlyNotOK);
-      
-      newRow = newRow.map((el) => {
+      }).map((el) => {
         if (el[0] !== "ok") {
-          console.log(el[1])
           if (onlyNotOK.includes(el[1]) && resultOnlyNotOK.includes(el[1])) {
             return ["exist", el[1]];
           }
