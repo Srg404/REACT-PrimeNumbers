@@ -22,6 +22,17 @@
   bottom: 0;
   background-color: $color-beta;
   transition: transform 0.5s ease;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #00000033;
+    z-index: -1;
+  }
   &.setting {
     transform: translateX(-100vw);
   }

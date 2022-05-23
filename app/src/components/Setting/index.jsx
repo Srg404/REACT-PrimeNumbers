@@ -1,7 +1,7 @@
 import './index.scss';
 import PropTypes from 'prop-types';
 
-function Setting({showSetting, setTheme, mode, setMode}) {
+function Setting({showSetting, setTheme, theme, mode, setMode}) {
 
   const handleChangeTheme = (e) => {
     if (e.target.checked) {
@@ -38,21 +38,11 @@ function Setting({showSetting, setTheme, mode, setMode}) {
           <div className="option">
             <input 
               type="checkbox" 
+              checked={(theme === "dark")}
               onChange={handleChangeTheme}
             />
           </div>
         </li>
-        {/* 
-        <li>
-          <div className="label">
-            High Contrast
-            <em>Mode for improved color vision</em>
-          </div>
-          <div className="option">
-            <input type="checkbox" />
-          </div>
-        </li>
-        */}
         <li>
           <div className="label">Feedback</div>
           <div className="option">
