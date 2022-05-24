@@ -1,29 +1,45 @@
 export default function UsePrimeNumber(num) {
-  // This hooks generate a array of al numbers befl Primeore the value
+  // Javascript implementation of the approach
 
-  var prime_num1 = [],
-    prime_num2 = [];
-  for (let k = 0; k <= num; k++) {
-    prime_num2.push(true);
+  // Function that returns true if n
+  // is prime else returns false
+  function isPrime(n) {
+    // Corner cases
+    if (n <= 1) return false;
+    if (n <= 3) return true;
+
+    // This is checked so that we can skip
+    // middle five numbers in below loop
+    if (n % 2 === 0 || n % 3 === 0) return false;
+
+    for (let i = 5; i * i <= n; i = i + 6)
+      if (n % i === 0 || n % (i + 2) === 0) return false;
+
+    return true;
   }
-  for (let i = 2; i <= num; i++) {
-    if (prime_num2[i]) {
-      prime_num1.push(i);
-      for (let j = 1; i * j <= num; j++) {
-        prime_num2[i * j] = false;
-      }
+
+  // Function to return the smallest
+  // prime number greater than N
+
+  function nextPrime(N) {
+    // Base case
+    if (N <= 1) return 2;
+
+    let prime = N;
+    let found = false;
+
+    // Loop continuously until isPrime returns
+    // true for a number greater than n
+    while (!found) {
+      prime++;
+
+      if (isPrime(prime)) found = true;
     }
+
+    return prime;
   }
-  return prime_num1;
-}
 
-/* For testing
- 
-function isPrime(num) {
-    for (let i = 2; i * i <= num; i++)
-        if (num % i === 0)
-          return false; 
-    return num > 1;
-}
+  return nextPrime(num);
 
-*/
+  // This code is contributed by Mayank Tyagi
+}

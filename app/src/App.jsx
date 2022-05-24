@@ -29,20 +29,21 @@ function App() {
     generatePrimeNumber();
     // Set Board
     initBoard();
+    // eslint-disable-next-line
   }, [mode]);
 
   function generatePrimeNumber() {
-    // TODO: Improve this code
+    // TODO: test if the primenumber generated is in the correct length (maybe create a function)
     switch (mode) {
       case 'easy':
-        setResult(UsePrimeNumber(Math.random().toString().slice(2, 7)).slice(-1)[0]);
+        setResult(UsePrimeNumber(Math.random().toString().slice(2, 7)));
         break;
       case 'hard':
-        setResult(UsePrimeNumber(Math.random().toString().slice(2, 9)).slice(-1)[0]);
+        setResult(UsePrimeNumber(Math.random().toString().slice(2, 9)));
         break;
       default:
         // 'medium'
-        setResult(UsePrimeNumber(Math.random().toString().slice(2, 8)).slice(-1)[0]);
+        setResult(UsePrimeNumber(Math.random().toString().slice(2, 8)));
         break;
     }
   }
@@ -99,22 +100,22 @@ function App() {
       const currentRow = boardArray[gameRound];
       const resultArray = result.toString().split("");
 
-      // Possible Value : empty neutral exist ok 
+      // Possible Value : "empty" "neutral" "exist" "ok" 
 
-      let onlyNotOK = [];
       let resultOnlyNotOK = [];
 
       let newRow = currentRow.map((el, index) => {
+        // Test if is the correct number at this place and add number if not ok in an accumulator
         if (el[1] === resultArray[index]) {
           return ["ok", el[1]];
         } else {
-          onlyNotOK.push( el[1]);
           resultOnlyNotOK.push(resultArray[index]);
           return ["neutral", el[1]];
         }
       }).map((el) => {
+        // Test if the number exist in acumulator 
         if (el[0] !== "ok") {
-          if (onlyNotOK.includes(el[1]) && resultOnlyNotOK.includes(el[1])) {
+          if (resultOnlyNotOK.includes(el[1])) {
             return ["exist", el[1]];
           }
         } 
