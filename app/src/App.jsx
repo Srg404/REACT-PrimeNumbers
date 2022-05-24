@@ -33,19 +33,26 @@ function App() {
   }, [mode]);
 
   function generatePrimeNumber() {
-    // TODO: test if the primenumber generated is in the correct length (maybe create a function)
     switch (mode) {
       case 'easy':
-        setResult(UsePrimeNumber(Math.random().toString().slice(2, 7)));
+        setResult(primeNumber(5));
         break;
       case 'hard':
-        setResult(UsePrimeNumber(Math.random().toString().slice(2, 9)));
+        setResult(primeNumber(7));
         break;
       default:
         // 'medium'
-        setResult(UsePrimeNumber(Math.random().toString().slice(2, 8)));
+        setResult(primeNumber(6));
         break;
     }
+  }
+
+  function primeNumber(numLength) {
+    let num = 0;
+    while (num.toString().length !== numLength) {
+      num = UsePrimeNumber(parseInt(Math.random().toString().slice(2, numLength + 2)));
+    }
+    return num;
   }
 
   function initBoard() {
