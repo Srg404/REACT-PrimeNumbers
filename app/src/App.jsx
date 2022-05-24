@@ -61,10 +61,13 @@ function App() {
     gamePosition = 0;
   }
 
-  // The game
+  // The game running
   function game(keyVal) {
+    // If key is a number :
     ((parseInt(keyVal) >= 0) && (parseInt(keyVal) <= 9)) && addNum(keyVal);
+    // If key is Backspace :
     ((keyVal === "Backspace") && (gamePosition > 0)) && removeNum();
+    // If key is Enter :
     (keyVal === "Enter") && checkRow();
   }
 
@@ -88,16 +91,6 @@ function App() {
       currentRow[gamePosition][1] = "0";
       updateBoardRow(currentRow, gameRound);
     }
-  }
-
-  // update the board with the new row
-  function updateBoardRow(currentRow, gameRound) {
-    setBoardArray(boardArray => boardArray.map((el, index) => {
-      if (gameRound === index) {
-        return currentRow;
-      }
-      return el
-    }));
   }
 
   // When the user push on enter key
@@ -148,6 +141,16 @@ function App() {
     }
   }
 
+  // update the board with the new row
+  function updateBoardRow(currentRow, gameRound) {
+    setBoardArray(boardArray => boardArray.map((el, index) => {
+      if (gameRound === index) {
+        return currentRow;
+      }
+      return el
+    }));
+  }
+
   function playAgain() {
     setPlay(true);
     initBoard();
@@ -156,11 +159,13 @@ function App() {
 
   // Get the values of keyboard keys
   useEffect(() => {
+    console.log("Get Keys");
     document.addEventListener('keyup', handleKeyUp);
     return () => {
       document.removeEventListener('keyup', handleKeyUp);
     };
-  });
+    // eslint-disable-next-line
+  },[]);
 
   function handleKeyUp(e) {
     game(e.key);
