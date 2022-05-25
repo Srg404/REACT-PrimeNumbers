@@ -1,2 +1,4 @@
 # misc
 primes.json
+.DS_Store
+exports/*

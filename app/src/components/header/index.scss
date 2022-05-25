@@ -11,6 +11,12 @@
         text-transform: uppercase;
         text-align: center;
         padding: 0 1em;
+        em {
+            font-size: 0.5em;
+            vertical-align: super;
+            text-transform: none;
+            margin-left: 0.25em;
+        }
     }
     button {
         @extend .reset-button;

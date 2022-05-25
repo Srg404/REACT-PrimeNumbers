@@ -17,7 +17,7 @@ function Header({showSetting,showMenu,setShowMenu,setShowSetting,title}) {
         <img src={settingIcon} className="icon-menu" alt="setting" />
         <span>Setting</span>
       </button>
-      <h1>{title}</h1>
+      <h1>{title}<em>Beta</em></h1>
       <button
         className={showMenu ? "bt-menu active" : "bt-menu"}
         onClick={() => {
