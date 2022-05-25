@@ -9,13 +9,14 @@ import { useEffect, useState } from 'react';
 import UsePrimeNumber from './hooks/UsePrimeNumber';
 import UseDeepCopy from './hooks/UseDeepCopy';
 import Result from './components/Board/Result';
+import { useTranslation } from 'react-i18next';
 
 let gameRound = 0;
 let gamePosition = 0;
 const title = "Prime Number";
-
+const languageStored = localStorage.getItem('language');
 function App() {
-
+  const { i18n } = useTranslation();
   const [showSetting, setShowSetting] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [theme, setTheme] = useState("dark");
@@ -25,6 +26,8 @@ function App() {
   const [boardArray, setBoardArray] = useState([]);
 
   useEffect(() => {
+    // set if language stored
+    (languageStored) && i18n.changeLanguage(languageStored);
     // generate the Prime Number
     generatePrimeNumber();
     // Set Board
