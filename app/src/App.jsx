@@ -205,6 +205,7 @@ function App() {
       <Setting
         showSetting={showSetting}
         setTheme={setTheme}
+        theme={theme}
         mode={mode}
         setMode={setMode}
       />
