@@ -1,20 +1,41 @@
 import './index.scss';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { NavLink, useLocation } from "react-router-dom";
 
-function Menu({showMenu}) {
+function Menu({showMenu,setShowMenu}) {
   const { t, i18n } = useTranslation();
   const changeLng = (lng) => {
     i18n.changeLanguage(lng);
     localStorage.setItem('language', lng);
   }
+  const {pathname} = useLocation();
+  useEffect(() => {
+    setShowMenu(false);
+    // eslint-disable-next-line 
+  }, [ pathname ]);
+
 
   return (
     <div className={showMenu ? "big-menu menu active" : "big-menu menu"}>
       <nav className="menu">
         <ul>
-          <li><a href="/">{t('How to play')}</a></li>
-          <li><a href="/">{t('About')}</a></li>
+          <li>
+            <NavLink 
+            to="/" 
+            activeclassname="active"
+            >{t('the game')}</NavLink></li>
+          <li>
+            <NavLink 
+            to="/how-to-play" 
+            activeclassname="active"
+            >{t('How to play')}</NavLink></li>
+          <li>
+            <NavLink 
+            to="/about" 
+            activeclassname="active"
+            >{t('About')}</NavLink></li>
         </ul>
       </nav>
       <nav className="languages">
@@ -33,7 +54,8 @@ Menu.defaultProps = {
 }
 
 Menu.propTypes = {
-  showMenu: PropTypes.bool
+  showMenu: PropTypes.bool,
+  setShowMenu: PropTypes.func,
 }
 
 export default Menu;

@@ -6,12 +6,14 @@ const resources = {
     translation: {
       "How to play": "How to play",
       About: "About",
+      "The game": "The game",
     },
   },
   fr: {
     translation: {
       "How to play": "Comment jouer",
       About: "A-propos",
+      "The game": "Le jeux",
     },
   },
 };
