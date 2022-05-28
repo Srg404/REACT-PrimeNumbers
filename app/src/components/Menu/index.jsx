@@ -25,7 +25,7 @@ function Menu({showMenu,setShowMenu}) {
             <NavLink 
             to="/" 
             activeclassname="active"
-            >{t('the game')}</NavLink></li>
+            >{t('The game')}</NavLink></li>
           <li>
             <NavLink 
             to="/how-to-play" 

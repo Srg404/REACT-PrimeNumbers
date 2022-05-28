@@ -3,7 +3,7 @@ import './App.scss';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import Setting from './components/Setting';
-import {BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Game from './pages/Game';
