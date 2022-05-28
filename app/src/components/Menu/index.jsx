@@ -13,9 +13,7 @@ function Menu({showMenu,setShowMenu}) {
   const {pathname} = useLocation();
   useEffect(() => {
     setShowMenu(false);
-    // eslint-disable-next-line 
-  }, [ pathname ]);
-
+  }, [ pathname, setShowMenu ]); 
 
   return (
     <div className={showMenu ? "big-menu menu active" : "big-menu menu"}>

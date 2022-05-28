@@ -21,8 +21,7 @@ function Game({mode}) {
     generatePrimeNumber();
     // Set Board
     initBoard();
-    // eslint-disable-next-line
-  }, [mode]);
+  }, [mode]); // eslint-disable-line
 
   function generatePrimeNumber() {
     switch (mode) {
@@ -151,13 +150,11 @@ function Game({mode}) {
 
   // Get the values of keyboard keys
   useEffect(() => {
-    console.log("Get Keys");
     document.addEventListener('keyup', handleKeyUp);
     return () => {
       document.removeEventListener('keyup', handleKeyUp);
     };
-    // eslint-disable-next-line
-  },[]);
+  },[]); // eslint-disable-line
 
   function handleKeyUp(e) {
     game(e.key);
