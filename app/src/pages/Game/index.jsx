@@ -17,11 +17,27 @@ function Game({mode}) {
   const [boardArray, setBoardArray] = useState([]);
 
   useEffect(() => {
-    // generate the Prime Number
-    generatePrimeNumber();
-    // Set Board
     initBoard();
   }, [mode]); // eslint-disable-line
+
+  // Get the values of keyboard keys
+  useEffect(() => {
+    function handleKeyUp(e) {
+      game(e.key);
+    }
+    document.addEventListener('keyup', handleKeyUp);
+    return () => {
+      document.removeEventListener('keyup', handleKeyUp);
+    };
+  },[boardArray]); // eslint-disable-line 
+
+  function initBoard() {
+    setBoardArray(UseDeepCopy(data)[mode]);
+    gameRound = 0;
+    gamePosition = 0;
+    generatePrimeNumber();
+    setPlay(true);
+  }
 
   function generatePrimeNumber() {
     switch (mode) {
@@ -39,6 +55,7 @@ function Game({mode}) {
   }
 
   function primeNumber(numLength) {
+    // generate a primenumber from a length and test if the length of generated number is correct
     let num = 0;
     while (num.toString().length !== numLength) {
       num = UsePrimeNumber(parseInt(Math.random().toString().slice(2, numLength + 2)));
@@ -46,15 +63,7 @@ function Game({mode}) {
     return num;
   }
 
-  function initBoard() {
-    setBoardArray(UseDeepCopy(data)[mode]);
-    gameRound = 0;
-    gamePosition = 0;
-  }
-
-  // The game running
   function game(keyVal) {
-    console.log("game, keyval : ",keyVal);
     // If key is a number :
     ((parseInt(keyVal) >= 0) && (parseInt(keyVal) <= 9)) && addNum(keyVal);
     // If key is Backspace :
@@ -62,6 +71,7 @@ function Game({mode}) {
     // If key is Enter :
     (keyVal === "Enter") && checkRow();
   }
+  
 
   // When the user push on a number key
   function addNum(keyVal) {
@@ -70,6 +80,8 @@ function Game({mode}) {
       currentRow[gamePosition][0] = "neutral";
       currentRow[gamePosition][1] = keyVal;
       gamePosition = (gamePosition === currentRow.length) ? gamePosition : gamePosition + 1;
+      console.log("currentRow -> ",currentRow);
+      console.log("gameRound -> ",gameRound);
       updateBoardRow(currentRow, gameRound);
     }
   }
@@ -120,17 +132,17 @@ function Game({mode}) {
       gameRound++;
 
       if (newRow.every((el) => el[0] === "ok")) {
-        console.log('You win!');
         gameRound = boardArray.length;
       }
     }
 
     if (gameRound === boardArray.length) {
-      console.log('Game over');
       setPlay(false);
-      // init Board
-
     }
+  }
+
+  function playAgain() {
+    initBoard();
   }
 
   // update the board with the new row
@@ -142,23 +154,6 @@ function Game({mode}) {
       return el
     }));
   }
-
-  function playAgain() {
-    setPlay(true);
-    initBoard();
-    generatePrimeNumber();
-  }
-
-  // Get the values of keyboard keys
-  useEffect(() => {
-    function handleKeyUp(e) {
-      game(e.key);
-    }
-    document.addEventListener('keyup', handleKeyUp);
-    return () => {
-      document.removeEventListener('keyup', handleKeyUp);
-    };
-  },[]); // eslint-disable-line 
 
   return (
     <div className="game">
