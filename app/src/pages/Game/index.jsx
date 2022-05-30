@@ -54,6 +54,7 @@ function Game({mode}) {
 
   // The game running
   function game(keyVal) {
+    console.log("game, keyval : ",keyVal);
     // If key is a number :
     ((parseInt(keyVal) >= 0) && (parseInt(keyVal) <= 9)) && addNum(keyVal);
     // If key is Backspace :
@@ -150,15 +151,14 @@ function Game({mode}) {
 
   // Get the values of keyboard keys
   useEffect(() => {
+    function handleKeyUp(e) {
+      game(e.key);
+    }
     document.addEventListener('keyup', handleKeyUp);
     return () => {
       document.removeEventListener('keyup', handleKeyUp);
     };
-  },[]); // eslint-disable-line
-
-  function handleKeyUp(e) {
-    game(e.key);
-  }
+  },[]); // eslint-disable-line 
 
   return (
     <div className="game">
