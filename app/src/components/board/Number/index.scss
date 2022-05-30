@@ -12,6 +12,7 @@
     font-size: 1.25em;
     line-height: 1em;
     margin: 0.15em;
+    opacity: 0.25;
     &.empty {
         opacity: 0.75;
         span {
@@ -19,14 +20,17 @@
         }
     }
     &.neutral {
+        opacity: 1;
         background-color: $dark-grey;
         color: $white;
     }
     &.exist {
+        opacity: 1;
         background-color: $color-gamma;
         color: $black;
     }
     &.ok {
+        opacity: 1;
         background-color: $color-main;
         color: $black;
     }
