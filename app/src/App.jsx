@@ -34,6 +34,7 @@ function App() {
           setShowSetting={setShowSetting}
           showMenu={showMenu}
           setShowMenu={setShowMenu}
+          theme={theme}
         />
       </header>
       <BrowserRouter>

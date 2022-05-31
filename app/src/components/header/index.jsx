@@ -1,9 +1,11 @@
 import './index.scss';
 import settingIcon from '../../assets/images/setting.svg';
+import settingIconBlack from '../../assets/images/setting-black.svg';
 import menuIcon from '../../assets/images/menu.svg';
+import menuIconBlack from '../../assets/images/menu-black.svg';
 import PropTypes from 'prop-types';
 
-function Header({showSetting,showMenu,setShowMenu,setShowSetting,title}) {
+function Header({showSetting,showMenu,setShowMenu,setShowSetting,title,theme}) {
 
   return (
     <div className="header">
@@ -14,7 +16,7 @@ function Header({showSetting,showMenu,setShowMenu,setShowSetting,title}) {
           setShowMenu(false)
         }}
       >
-        <img src={settingIcon} className="icon-menu" alt="setting" />
+        <img src={(theme !== "light") ? settingIcon : settingIconBlack} className="icon-menu" alt="setting" />
         <span>Setting</span>
       </button>
       <h1>{title}<em>Beta</em></h1>
@@ -26,7 +28,7 @@ function Header({showSetting,showMenu,setShowMenu,setShowSetting,title}) {
         }}
       >
         <span>Menu</span>
-        <img src={menuIcon} className="icon-menu" alt="menu" />
+        <img src={(theme !== "light") ? menuIcon : menuIconBlack} className="icon-menu" alt="menu" />
       </button>
     </div>
   );

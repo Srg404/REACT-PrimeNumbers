@@ -80,8 +80,6 @@ function Game({mode}) {
       currentRow[gamePosition][0] = "neutral";
       currentRow[gamePosition][1] = keyVal;
       gamePosition = (gamePosition === currentRow.length) ? gamePosition : gamePosition + 1;
-      console.log("currentRow -> ",currentRow);
-      console.log("gameRound -> ",gameRound);
       updateBoardRow(currentRow, gameRound);
     }
   }
